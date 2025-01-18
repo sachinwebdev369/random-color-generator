@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>randome color generator</title>
+        <style>
+            .main{
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* background-color: rgb(51, 69, 69); */
+            }
+            .box {
+                background-color: rgba(255, 255, 255, 0.1);
+                width: 80%;
+                max-width: 300px;
+                padding: 2rem;
+                border-radius: 15px;
+                text-align: center;
+            }
+
+            #color-code {
+                font-size: 2rem;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                mix-blend-mode: difference;
+                color: white;
+                margin-bottom: 3rem;    
+            }
+            button{
+                width: 100%;
+                font-size: 1.2rem;
+                padding: 8px;
+                border-radius: 15px;
+outline: none;
+border: 1px solid black;
+background-color: rgb(13, 12, 20);
+color: white;
+transition: all 300ms ease-in;
+cursor: pointer;
+            }
+
+            button:hover {
+                background-color: rgba(9, 9, 12, 0.9);
+
+            }
+
+        </style>
+    </head>
+    <body>
+       <div class="main">
+        <div class="box">
+            <p id="color-code">#43</p>
+            <button id="btn">generate color</button>
+        </div>
+       </div>
+
+<script>
+
+
+    const getColor = () => {
+        const randomeNumber = Math.floor(Math.random()*16777215)
+        const haxColorCode = randomeNumber.toString(16)
+        const randomeCode = '#'+ haxColorCode
+        document.body.style.backgroundColor = randomeCode
+     
+        document.getElementById('color-code').innerText = randomeCode
+        navigator.clipboard.writeText(randomeCode)
+    }
+
+
+
+    document.getElementById("btn").addEventListener('click', getColor )
+    getColor()
+</script>
+    </body>
+
+</html>
